@@ -37,14 +37,14 @@ class TableScrape:
     def scrape(self):
         table = []
 
-        rows = soupscope.find(self.table_row_container).find_all(self.table_row_tag)
+        rows = self.soupscope.find(self.table_row_container).find_all(self.table_row_tag)
 
         if self.separated_header:
-            header_row = soupscope.find(self.header_row_container).find(self.header_row_tag)
+            header_row = self.soupscope.find(self.header_row_container).find(self.header_row_tag)
             full_header = self.get_row_info(header_row, self.header_info_tag)
             table.append(full_header)
         else:
-            header_row = soupscope.find(self.table_row_container).find(self.header_row_tag)
+            header_row = self.soupscope.find(self.table_row_container).find(self.header_row_tag)
             full_header = self.get_row_info(header_row, self.header_info_tag)
             table.append(full_header)
 
@@ -54,5 +54,8 @@ class TableScrape:
                 row_data = self.get_row_info(row, self.table_info_tag)
                 table.append(row_data)
         return table
+
+
+
 
 
