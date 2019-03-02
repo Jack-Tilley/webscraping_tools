@@ -38,7 +38,7 @@ class TableScrape:
         if self.separated_header:
             header_row = self.soupscope.find(self.header_row_container).find(self.header_row_tag)
         else:
-            header_row = self.soupscope.find(self.table_row_container).find(self.header_row_tag)
+            header_row = self.soupscope.find(self.table_row_container).find(self.table_row_tag)
             rows = rows[1:]
 
         full_header = self.get_row_info(header_row, self.header_info_tag)
