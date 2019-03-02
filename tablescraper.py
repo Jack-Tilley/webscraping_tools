@@ -1,12 +1,9 @@
+# tablescraper.py
+# Jack Tilley
+# February 2019
+# This program scrapes the table inputted and outputs the table as a 2D list
+
 from bs4 import BeautifulSoup
-import requests
-from selenium import webdriver
-import time
-
-# If this program does not work for your soup, try dynamically loading the javascript on the page and then
-# feed that html to the soup
-# also consider adding time.sleep() to allow the page to load properly
-
 
 class TableScrape:
     def __init__(self, soupscope, ignore_rows=[], ignore_columns=[], separated_header=True,
@@ -38,24 +35,17 @@ class TableScrape:
         table = []
 
         rows = self.soupscope.find(self.table_row_container).find_all(self.table_row_tag)
-
         if self.separated_header:
             header_row = self.soupscope.find(self.header_row_container).find(self.header_row_tag)
-            full_header = self.get_row_info(header_row, self.header_info_tag)
-            table.append(full_header)
         else:
             header_row = self.soupscope.find(self.table_row_container).find(self.header_row_tag)
-            full_header = self.get_row_info(header_row, self.header_info_tag)
-            table.append(full_header)
-
             rows = rows[1:]
+
+        full_header = self.get_row_info(header_row, self.header_info_tag)
+        table.append(full_header)
+
         for row in rows:
             if row not in self.ignore_rows:
                 row_data = self.get_row_info(row, self.table_info_tag)
                 table.append(row_data)
         return table
-
-
-
-
-
