@@ -3,9 +3,9 @@ from bs4 import BeautifulSoup
 class ListScrape:
     def __init__(self, soupscope, row_tag="li", rows_to_ignore=[], columns_to_ignore=[]):
         self.soupscope = soupscope  # takes soup argument
-        self.row_tag = row_tag
-        self.rows_to_ignore = rows_to_ignore
-        self.columns_to_ignore = columns_to_ignore
+        self.row_tag = row_tag # usually li value, list element
+        self.rows_to_ignore = rows_to_ignore # list containing indices of rows to ignore
+        self.columns_to_ignore = columns_to_ignore # list containing indices of columns to ignore
 
     def get_row_info(self, row):
         infolist = row.find_all(text=True)
