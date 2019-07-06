@@ -22,6 +22,9 @@ class TableScrape:
         self.header_info_tag = header_info_tag # tag value of info stored inside header_row_tag
         self.table_info_tag = table_info_tag  # tag value of info stored inside table_row_tag
         self.keep_all_text = keep_all_text # keeps first text if False, keeps all text separated by "|" if True
+        self.header_data = []
+        self.body_data = []
+        self.table = []
 
     # gets row info based on row tag
     def get_row_info(self, row, tag_to_find):
@@ -45,8 +48,8 @@ class TableScrape:
             header_row = self.soupscope.find(self.table_row_container)
 
         header_row = header_row.find(self.header_row_tag)
-        full_header_data = self.get_row_info(header_row, self.header_info_tag)
-        return full_header_data
+        self.header = self.get_row_info(header_row, self.header_info_tag)
+        return self.header
 
     # gets table body info
     def get_body_info(self, rows):
@@ -57,16 +60,15 @@ class TableScrape:
         for row in rows:
             if row not in self.ignore_rows:
                 row_data = self.get_row_info(row, self.table_info_tag)
-                full_body_data.append(row_data)
-        return full_body_data
+                self.body_data.append(row_data)
+        return self.body_data
 
     # gets table values depending on parameters given
     def scrape(self):
-        table = []
         rows = self.soupscope.find(self.table_row_container).find_all(self.table_row_tag)
         full_header = self.get_header_info()
-        table.append(full_header)
+        self.table.append(full_header)
         full_body = self.get_body_info(rows)
         for info_row in full_body:
-            table.append(info_row)
-        return table
+            self.table.append(info_row)
+        return self.table
