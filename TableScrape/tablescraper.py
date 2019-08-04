@@ -72,3 +72,18 @@ class TableScrape:
         for info_row in full_body:
             self.table.append(info_row)
         return self.table
+
+    # cleans the data, removing spacing issues or blank lines
+    def clean(self):
+        for row in range(len(self.table)):
+            for col in range(len(row)):
+                self.table[row][col] = ' '.join(self.table[row][col].split()).replace("\n", "")
+        return self.table
+
+
+    # returns boolean based on whether or not the table is empty
+    def table_is_empty(self):
+        if self.table:
+            return True
+        else:
+            return False
