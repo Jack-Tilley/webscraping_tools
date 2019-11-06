@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: jack-tilley
+Version: 0.0.1
+Summary: Tools to make webscraping easier.
+Home-page: https://github.com/Jack-Tilley/webscraping-tools
+Author: Jack Tilley
+Author-email: tilley.e.jack@gmail.com
+License: UNKNOWN
+Description: # webscraping-tools
+        Tools to make webscraping easier
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown

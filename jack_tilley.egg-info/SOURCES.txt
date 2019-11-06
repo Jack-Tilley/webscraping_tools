@@ -1,0 +1,6 @@
+README.md
+setup.py
+jack_tilley.egg-info/PKG-INFO
+jack_tilley.egg-info/SOURCES.txt
+jack_tilley.egg-info/dependency_links.txt
+jack_tilley.egg-info/top_level.txt
