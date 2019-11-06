@@ -1,4 +1,4 @@
-from webscrapingTools import *
+from webscraping_tools import webscrapingTools as wt
 from bs4 import BeautifulSoup
 from selenium import webdriver
 import selenium
@@ -21,11 +21,11 @@ def table_scrape(url, PATH_TO_DRIVER, scroll_time=0, is_multi_tables=False):
     soup = BeautifulSoup(innerHTML, "html.parser")
     soupscope = soup.find_all("table")
     if not is_multi_tables:
-        scraping = TableScrape(soupscope[0], keep_all_text=True, separated_header=False)
+        scraping = wt.TableScrape(soupscope[0], keep_all_text=True, separated_header=False)
         return scraping.scrape()
     table_list = []
     for each_table in soupscope:
-        scraping = TableScrape(each_table, keep_all_text=True, separated_header=False)
+        scraping = wt.TableScrape(each_table, keep_all_text=True, separated_header=False)
         table_list.append(scraping.scrape())
     return scraping.scrape()
 
@@ -42,7 +42,7 @@ def list_scrape(url, PATH_TO_DRIVER, is_multi_lists=False):
     soup = BeautifulSoup(innerHTML, "html.parser")
     soupscope = soup.find("ul")
     if not is_multi_lists:
-        scraping = ListScrape(soupscope) # TODO
+        scraping = wt.ListScrape(soupscope) # TODO
         return scraping.scrape()
     
 # list1 = list_scrape("https://www.futhead.com/19/players/?bin_platform=ps",'/Users/Tilley/Downloads/chromedriver')
