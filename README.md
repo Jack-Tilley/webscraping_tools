@@ -1,4 +1,4 @@
-# webscraping-tools
+# webscraping_tools
 Tools to make webscraping easier
 
 # Installation:
