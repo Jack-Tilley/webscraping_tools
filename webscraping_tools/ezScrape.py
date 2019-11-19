@@ -47,3 +47,17 @@ def list_scrape(url, PATH_TO_DRIVER, is_multi_lists=False):
     
 # list1 = list_scrape("https://www.futhead.com/19/players/?bin_platform=ps",'/Users/Tilley/Downloads/chromedriver')
 # print(list1)
+
+def getHTML(url,PATH_TO_DRIVER,scrollTime=0):
+    driver = webdriver.Chrome(PATH_TO_DRIVER)
+    driver.get(url)
+    time.sleep(2)
+    driver.execute_script("window.scrollTo(0, 100000)")
+    time.sleep(2+scrollTime)
+    driver.execute_script("window.scrollTo(0, 0)")
+    time.sleep(2)
+    innerHTML = driver.execute_script("return document.body.innerHTML")
+    time.sleep(2)
+    driver.close()
+    soup = BeautifulSoup(innerHTML, "html.parser")
+    return soup
