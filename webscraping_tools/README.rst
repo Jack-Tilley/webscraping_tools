@@ -27,6 +27,7 @@ Features
 --------
 
 * TODO
+Update readme, fix default values, add option to choose getHtml method,reupload to pyPi
 
 Credits
 -------
